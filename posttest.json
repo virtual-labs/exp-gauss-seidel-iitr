@@ -1,0 +1,65 @@
+{
+	"version": 2.0,
+	"questions": [
+		{
+			"question": "For a load bus, the specified quantities are – ",
+			"answers": {
+				"a": "P and Q, ",
+				"b": "P and V",
+				"c": "Q and V",
+				"d": "None of the above"
+			},
+			"correctAnswer": "a"
+		},
+		{
+			"question": "For a PV bus, the unknown quantities are –  ",
+			"answers": {
+				"a": "P and Q, ",
+				"b": "P and V",
+				"c": "Q and Angle",
+				"d": "None of the above"
+			},
+			"correctAnswer": "c"
+		},
+		{
+			"question": "For a N bus system, if P is the number of PQ buses. Then find the number of PV buses:",
+			"answers": {
+				"a": "N-P ",
+				"b": "N",
+				"c": "P, ",
+				"d": "None of the above"
+			},
+			"correctAnswer": "d"
+		},
+		{
+			"question": "In power flow analysis using the Gauss-Seidel method, which type of bus is used as a reference point with a fixed voltage magnitude and angle?",
+			"answers": {
+				"a": "PV bus",
+				"b": "PQ bus",
+				"c": "Slack bus",
+				"d": "None of the above."
+			},
+			"correctAnswer": "c"
+		},
+		{
+			"question": "What is the primary objective for performing power flow analysis using the Gauss-Seidel method?",
+			"answers": {
+				"a": "To calculate the admittance matrix",
+				"b": "To determine the voltage magnitude and angle at each bus",
+				"c": "To design transmission lines",
+				"d": "To determine the power generation cost"
+			},
+			"correctAnswer": "b"
+		},
+		{
+			"question": "Which of the following type of buses provide variable reactive power support to the power system?",
+			"answers": {
+				"a": "Slack and PV",
+				"b": "Slack and PQ",
+				"c": "PV and PQ",
+				"d": "Only PV"
+			},
+			"correctAnswer": "a"
+		}
+	]
+}
