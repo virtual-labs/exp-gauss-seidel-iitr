@@ -1,39 +1,58 @@
 {
-  "version": 2.0,
-  "questions": [
-    {
-      "question": "This is a Sample Question 1?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    }
-  ]
+    "version": 2.0,
+    "questions":[
+		{
+			"question": "What type of method is the Gauss-Seidel method?",
+			"answers": {
+				"a": "Direct method",
+				"b": "Iterative method",
+				"c": "Stochastic method",
+				"d": "None of the above"
+			},
+			"correctAnswer": "b"
+		},
+		{
+			"question": "In the Gauss-Seidel method, how are bus voltages updated?",
+			"answers": {
+				"a": "Simultaneously for all buses",
+				"b": "Using random values ",
+				"c": "Sequentially one bus at a time ",
+				"d": "Using linear approximations"
+			},
+			"correctAnswer": "c"
+		},
+		{
+			"question": "Which criterion is typically used to determine convergence in the Gauss-Seidel method?",
+			"answers": {
+				"a": "Number of iterations ",
+				"b": "Change in power flow ",
+				"c": "System frequency stability",
+				"d": "Change in voltage magnitudes "
+			},
+			"correctAnswer": "d"
+		},
+		{
+			"question": "What is a common initial guess for bus voltages in the Gauss-Seidel method?:",
+			"answers": {
+				"a": "All set to zero",
+				"b": "All set to 1.0 p.u. with 0 degrees angle",
+				"c": "All set to the maximum expected value",
+				"d": "All set to random values"
+			},
+			"correctAnswer": "b"
+		},
+		{
+			"question": "Because of the nature of the power-flow bus data, nodal equations do not directly fit the linear-equation format, and power-flow equations are actually nonlinear. ",
+			"answers": {
+				"a": "True",
+				"b": "False",
+				"c": "Can't comment",
+				"d": "None of the above"
+			},
+			"correctAnswer": "a"
+		}
+	]
 }
+
+
+  
