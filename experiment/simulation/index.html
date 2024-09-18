@@ -1,13 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gauss Seidel Power Flow </title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
 </head>
 <body>
-		<!-- Your code goes here-->
+<h1>Gauss Seidel Power Flow</h1>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<h2>Bus Data</h2>
+<label for="numBuses">Enter the number of buses:</label>
+<input type="number" id="numBuses">
+<button onclick="generateBusTable()">Generate Bus Table</button>
+<button onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
+<button onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
+<div id="busTableContainer"></div>
+
+<h2>Line Data</h2>
+<label for="numLines">Enter the number of lines:</label>
+<input type="number" id="numLines">
+<button onclick="generateLineTable()">Generate Line Table</button>
+<button onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
+<button onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
+<div id="lineTableContainer"></div>
+
+<h2>Y-Bus Matrix</h2>
+<button onclick="calculateYbus()">Calculate Y-Bus</button>
+<div id="ybusContainer"></div>
+
+<h2>Results</h2>
+<label for="Tolerance">Enter Tolerance limit value:</label>
+<input type="number" step="any" id="Tolerance">
+<label for="MaIteration">Enter Maximum allowed iteration:</label>
+<input type="number" id="MaIteration">
+<br><br>
+<button onclick="runLoadFlow()">Run Power Flow</button>
+<div id="loadFlowResults"></div>
+
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+
 </body>
 </html>
