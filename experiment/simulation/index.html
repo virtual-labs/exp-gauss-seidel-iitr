@@ -3,58 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gauss Seidel Power Flow </title>
+<title>Gauss Seidel Power Flow</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
-
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
-</style>
 </head>
+
 <body>
-<h1>Gauss Seidel Power Flow</h1>
+  <div class="container">
 
-<h2>Bus Data</h2>
-<label for="numBuses">Enter the number of buses:</label>
-<input type="number" id="numBuses">
-<button onclick="generateBusTable()">Generate Bus Table</button>
-<button onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
-<button onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
-<div id="busTableContainer"></div>
+    <!-- Navbar with Instructions -->
+    <div class="navbar">
+      <div class="center">
+        <h1>Gauss Seidel Power Flow</h1>
+      </div>
+      <div class="instructions">
+        <button onclick="openInstructions()">Instructions</button>
+      </div>
+    </div>
 
-<h2>Line Data</h2>
-<label for="numLines">Enter the number of lines:</label>
-<input type="number" id="numLines">
-<button onclick="generateLineTable()">Generate Line Table</button>
-<button onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
-<button onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
-<div id="lineTableContainer"></div>
+    <!-- Modal for Instructions -->
+    <div id="instructionsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal"></span>
+    <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px; text-align: justify;">
+      
+      <b>STEP 1</b>: Enter the number of buses in a power system. Then, click on the <b>“Generate Bus Table”</b> and fill the details of buses i.e., Bus Type (Slack Bus = 1, PV Bus = 2, PQ Bus = 3), Voltage magnitude (pu), Angle (degree), P<sub>gen</sub> (pu), Q<sub>gen</sub> (pu), P<sub>load</sub> (pu), Q<sub>load</sub> (pu), Q<sub>min</sub> (pu), Q<sub>max</sub> (pu). 
+      <br>
+      <b>Note:</b> Bus data for two standard IEEE bus systems are provided- (I) IEEE 5-Bus system and (II) IEEE 14-Bus system. To access the data click on the button of Autofill Bus Data: IEEE 5-Bus or Autofill Bus Data: IEEE 14-Bus.
+      <br><br>
+      <b>STEP 2</b>: Enter the number of lines in a power system. Then, click on the <b>“Generate Line Table”</b> and fill the details of lines i.e., From Bus, To Bus, R (pu), X (pu), B (pu) (Full line charging admittance), Transformer Tap.  
+      <br>
+      <b>Note:</b> Line data for two standard IEEE bus systems are provided- (I) IEEE 5-Bus system and (II) IEEE 14-Bus system. To access the data click on the button of Autofill Line Data: IEEE 5-Bus or Autofill Line Data: IEEE 14-Bus.
+      <br><br>
+      <b>STEP 3</b>: Click on <b>“Calculate Y-Bus”</b>. The values of the Y-Bus matrix will be displayed.
+      <br><br>
+      <b>STEP 4</b>: Enter the Tolerance limit value and Maximum allowed iteration. The values for the tolerance limit and the maximum allowed iterations will be set.
+      <br><br>
+      <b>STEP 5</b>: Click on <b>“Run Power Flow”</b>. The number of iterations, Buses data: Bus Type, Voltage magnitude (pu), Angle (degree), P<sub>gen</sub> (pu), Q<sub>gen</sub> (pu), P<sub>load</sub> (pu), Q<sub>load</sub> (pu), Line flows data: P<sub>line</sub> (pu), Q<sub>line</sub> (pu), P<sub>loss</sub> (pu), Q<sub>loss</sub> (pu), Total real and reactive power losses (pu) after convergence will be displayed.
+      <br>
+      <b>Note:</b> If the power flow does not converge within the maximum allowed iterations, a message will pop up stating, <b>“The power flow analysis did not converge within the maximum allowed iterations”</b>.
+    </div>
+  </div>
+</div>
 
-<h2>Y-Bus Matrix</h2>
-<button onclick="calculateYbus()">Calculate Y-Bus</button>
-<div id="ybusContainer"></div>
 
-<h2>Results</h2>
-<label for="Tolerance">Enter Tolerance limit value:</label>
-<input type="number" step="any" id="Tolerance">
-<label for="MaIteration">Enter Maximum allowed iteration:</label>
-<input type="number" id="MaIteration">
-<br><br>
-<button onclick="runLoadFlow()">Run Power Flow</button>
-<div id="loadFlowResults"></div>
+    <!-- Bus Data Section -->
+    <div class="section" id="busDataSection">
+      <h2>Bus Data</h2>
+      <div class="input-row">
+        <label for="numBuses">Enter the number of buses:</label>
+        <input type="number" id="numBuses">
+      </div>
+      <div class="button-group">
+        <button onclick="generateBusTable()">Generate Bus Table</button>
+        <button class="button-secondary" onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
+        <button class="button-tertiary" onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
+      </div>
+      <div id="busTableContainer"></div>
+    </div>
 
-<script src="script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+    <!-- Line Data Section -->
+    <div class="section" id="lineDataSection">
+      <h2>Line Data</h2>
+      <div class="input-row">
+        <label for="numLines">Enter the number of lines:</label>
+        <input type="number" id="numLines">
+      </div>
+      <div class="button-group">
+        <button onclick="generateLineTable()">Generate Line Table</button>
+        <button class="button-secondary" onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
+        <button class="button-tertiary" onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
+      </div>
+      <div id="lineTableContainer"></div>
+    </div>
 
+    <!-- Y-Bus Matrix Section -->
+    <div class="section" id="ybusSection">
+      <h2>Y-Bus Matrix</h2>
+      <div class="button-group">
+        <button onclick="calculateYbus()">Calculate Y-Bus</button>
+      </div>
+      <div id="ybusContainer"></div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="section" id="resultsSection">
+      <h2>Results</h2>
+      <div class="input-row">
+        <label for="Tolerance">Enter Tolerance limit value:</label>
+        <input type="number" step="any" id="Tolerance">
+      </div>
+      <div class="input-row">
+        <label for="MaIteration">Enter Maximum allowed iteration:</label>
+        <input type="number" id="MaIteration">
+      </div>
+      <div class="button-group">
+        <button onclick="runLoadFlow()">Run Power Flow</button>
+      </div>
+      <div id="loadFlowResults"></div>
+    </div>
+ <footer>&copy; 2025 Virtual Labs | IIT Roorkee</footer>
+  </div>
+
+  <!-- Scripts -->
+   <script>
+  function openInstructions() {
+    document.getElementById('instructionsModal').style.display = 'block';
+  }
+
+  function closeInstructions() {
+    document.getElementById('instructionsModal').style.display = 'none';
+  }
+
+  // Close modal when clicking outside of it
+  window.onclick = function(event) {
+    const modal = document.getElementById('instructionsModal');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
 </body>
 </html>
