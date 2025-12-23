@@ -19,5 +19,7 @@
 <br>
 <b>STEP 5</b>: Click on “Run Power Flow”. The number of iterations, Buses data: Bus Type, Voltage magnitude (pu), Angle (degree) , P<sub>gen</sub> (pu), Q<sub>gen</sub> (pu), Pload<sub>load</sub> (pu), Q<sub>load</sub> (pu), Line flows data: P<sub>line</sub> (pu), Q<sub>line</sub> (pu), P<sub>loss</sub> (pu), Q<sub>loss</sub> (pu), Total real and reactive power losses (pu) after convergence will be displayed.
 <br>
-<b>Note:</b> If the power flow does not converge within the maximum allowed iterations, a message will pop up stating, “The power flow analysis did not converge within the maximum allowed iterations”.
+ <b>Note1:</b> If the power flow does not converge within the maximum allowed iterations, a message will pop up stating, <b>“The power flow analysis did not converge within the maximum allowed iterations”</b>.
+      <br><br>
+      <b>Note2:</b> The convergence characteristics of the solution can be analysed by varying the maximum number of iterations and the tolerance limit. Also, the tolerance limit can be increased if the solution does not converge.</b>
 <br>
